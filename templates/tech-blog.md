@@ -1,7 +1,6 @@
 # Blog Title
----
 This is a introduction to the article. Maybe outline a problem case this article will help solve.
----
+
 ## Section 1
 Talk about stuff.
 
