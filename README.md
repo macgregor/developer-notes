@@ -1,1 +1,2 @@
-This file serves as an introduction to your Knowledge Base, it is displayed on the homepage of your website. Use it to provide more context to your visitors.
+# Welcome
+This book functions as my knowledgebase/blog platforms. I appreciate good documentation and find myself constantly googling things and clicking on purple links. Now I have a place to store it. Maybe you will find it useful too.

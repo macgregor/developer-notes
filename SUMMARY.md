@@ -1,8 +1,6 @@
-# Summary
+# Developer Notes
 
 * [Introduction](README.md)
-* [What is XYZ?](first-question.md)
-* [How can I do X?](second-question.md)
-
-
-
+* Python
+* Templates
+  * [Tech Blog](templates/tech-blog.md)
