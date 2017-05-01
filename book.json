@@ -1,5 +1,8 @@
 {
-    "plugins": [ "theme-faq", "page-toc" ],
+    "plugins": [ "theme-api", "page-toc" ],
     "pluginsConfig": {
+      "theme-api": {
+            "theme": "dark"
+        }
     }
 }
