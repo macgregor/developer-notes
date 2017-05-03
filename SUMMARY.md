@@ -7,6 +7,9 @@
 * [Documentation generation with Sphinx](python/sphinx.md)
 * [sphinx-autodoc ImportError: No module named foo](python/autodoc-import.md)
 
+### Linux
+* [How To: linux disk usage w/ du](linux/howto_du.md)
+
 ### Templates
 * [Tech Blog](templates/tech-blog.md)
 * [Error post](templates/error-post.md)
