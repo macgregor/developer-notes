@@ -54,6 +54,15 @@ import sys
 sys.path.insert(0, os.path.abspath('../..'))
 ```
 
+## sphinx-apidoc --append-syspath
+When using sphinx-apidoc to initalize your project documentation there is a flag
+`-a, --append-syspath` which says it will "Append module_path to sys.path, 
+used when --full is given" which sounds hopeful. I tried it and it added
+`sys.path.append('/home/macgregor/Repos/personal/accounting')` to my conf.py.
+First of all this is an absolute path so it wont work on any other computer I may
+want to use and second it didnt even work (probably because my docs are in a
+subdirectory). I changed it back to my aforementioned solution.
+
 ## Additional Resources
 * [Stack overflow - Sphinx is not able to import anything](http://stackoverflow.com/questions/23531825/sphinx-is-not-able-to-import-anything)
 * [another stack overflow](http://stackoverflow.com/questions/10324393/sphinx-build-fail-autodoc-cant-import-find-module)
