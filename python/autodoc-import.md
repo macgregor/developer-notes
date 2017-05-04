@@ -43,7 +43,7 @@ able to find it.
 ```
 
 So my project has the documentation root directory in a subdirectory called `docs/`
-I tried adding `sys.path.insert(0, os.path.abspath('..'))` to `docs/conf.py` but
+I tried adding `sys.path.append(os.path.abspath('..'))` to `docs/conf.py` but
 that didnt quit get it. Going up two levels did the trick.
 
 Final solution, add the following to `conf.py` (exact path will vary based on your
@@ -51,12 +51,24 @@ configuration):
 ```python
 import os
 import sys
-sys.path.insert(0, os.path.abspath('../..'))
+sys.path.append(os.path.abspath('../..'))
+```
+
+This worked fine, until I renamed my module and my tests in the `tests/` subdirectory
+started throwing import errors. I really hate how painful python makes organizing
+your code. Before fixing my $PYTHONPATH so my unit tests work again, I tried adding
+two `sys.path.append()` calls to fix it and it worked. So in the end my `conf.py`
+looks like:
+```python
+import os
+import sys
+sys.path.append(os.path.abspath('../..'))
+sys.path.append(os.path.abspath('..'))
 ```
 
 ## sphinx-apidoc --append-syspath
 When using sphinx-apidoc to initalize your project documentation there is a flag
-`-a, --append-syspath` which says it will "Append module_path to sys.path, 
+`-a, --append-syspath` which says it will "Append module_path to sys.path,
 used when --full is given" which sounds hopeful. I tried it and it added
 `sys.path.append('/home/macgregor/Repos/personal/accounting')` to my conf.py.
 First of all this is an absolute path so it wont work on any other computer I may

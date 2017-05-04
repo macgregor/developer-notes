@@ -36,7 +36,7 @@ sphinx-apidoc . --full -o docs -H 'MyProjectName' -A 'My Name' -V '0.1'
 
 When you need to to regenerate documentation:
 ```
-sphinx-apidoc . -o docs
+sphinx-apidoc . --force -o docs
 ```
 
 This generates the .rst files from your python code and outputs them to `./docs/`
@@ -55,27 +55,20 @@ the first time...
 ### Troubleshooting Errors
 * [sphinx-autodoc ImportError: No module named foo](autodoc-import.md)
 
-
-### Changing sort order
-By default autodoc sorts everything alphabetically. Im not a fan, I think im pretty
-good at ordering my code while writing it.
-
-> autodoc_member_order
->
->This value selects if automatically documented members are sorted alphabetical
->(value 'alphabetical'), by member type (value 'groupwise') or by source order
->(value 'bysource'). The default is alphabetical.
->
->Note that for source order, the module must be a Python module with the source code available.
-
-add this anywhere to conf.py:
+### Sphinx Configurations
+```bash
+sphinx-apidoc --separate
 ```
+Generate a separate page for each module in your project.
+
+```python
 autodoc_member_order = 'bysource'
 ```
-
-## Conclusion
-Sum up the article
+By default autodoc sorts everything alphabetically. Im not a fan, I think im
+pretty good at ordering my code while writing it. Add this anywhere in your
+conf.py to keep source ordering.
 
 ### Additional Resources
 * [overview of different docstring formats](http://stackoverflow.com/questions/3898572/what-is-the-standard-python-docstring-format)
 * [reStructuredText quick reference](http://docutils.sourceforge.net/docs/user/rst/quickref.html)
+* [How to create rich links with Sphinx](https://kev.inburke.com/kevin/sphinx-interlinks/)
