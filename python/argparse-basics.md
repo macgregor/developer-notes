@@ -44,7 +44,7 @@ print str(args.three)
 ```
 
 {% sample lang="bash" %}
-```bash
+```
 16:48:03 > mstratto > .../demos/python/argparse > master > python demo.py --help
 usage: demo.py [-h] one two three
 
@@ -168,7 +168,7 @@ print 'parsed_args.optional_list_int = %s' % ','.join([str(i) for i in args.opti
 ```
 
 {% sample lang="bash" %}
-```bash
+```
 18:19:02 > macgregor > .../demos/python/argparse > master > python demo.py --help
 usage: demo.py [-h]
                 [--optional-list-fixed OPTIONAL_LIST_FIXED OPTIONAL_LIST_FIXED OPTIONAL_LIST_FIXED]
@@ -202,7 +202,7 @@ complex operations. `git add demo.py`, `git commit -m 'adding demo.py'`,
 `git checkout -b new_branch`, etc. You can think of each of these subcommands as
 their own processor attached to the root git parser.
 
-One thing that bugs me is that when i add an optional argument to the root parser
+One thing that bugs me is that when I add an optional argument to the root parser
 so that all subcommands get it, like:
 ```python
 git_parser.add_argument('--global-option', help='all subcommands can use this argument')
@@ -256,7 +256,7 @@ args.func(args)
 ```
 
 {% sample lang="bash" %}
-```bash
+```
 18:54:59 > macgregor > .../demos/python/argparse > master > python git.py --help
 usage: git [-h] [--global-option GLOBAL_OPTION] {add,commit} ...
 
