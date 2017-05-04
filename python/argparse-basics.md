@@ -11,8 +11,8 @@ surprisingly decent and only start to let you down when you need to do some fanc
 stuff (like trying to extend
 [argparse.ArgumentParser](https://docs.python.org/2/library/argparse.html#argparse.ArgumentParser))
 
-[Argparse Basics Demo](https://github.com/macgregor/demos/blob/master/python/argparse/demo.py)
-
+Most of the example are pulled from [Argparse Basics Demo](https://github.com/macgregor/demos/blob/master/python/argparse/demo.py).
+You can check out that project to run examples for all the topics in this post.
 
 {% method %}
 ## Getting started
@@ -75,7 +75,9 @@ b
 
 ## Adding Arguments
 
+Once you initialize your `argparse.ArgumentParser` you can make calls to
 [argparse.ArgumentParser.add_argument](https://docs.python.org/2/library/argparse.html#argparse.ArgumentParser.add_argument)
+to add positional arguments, optional arguments and subparsers to build your cli.
 
 ### Positional Arguments
 This is what we used in the example above.
@@ -196,9 +198,19 @@ parsed_args.optional_list_int = 1,2,3,4,5,6
 ## Subparsers
 Subparsers can be used to parse commands differently based on positional arguments
 that came before. For example git commands use different verbs and nouns to perform
-complex operations. For example `git add demo.py`, `git commit -m 'adding demo.py'`,
+complex operations. `git add demo.py`, `git commit -m 'adding demo.py'`,
 `git checkout -b new_branch`, etc. You can think of each of these subcommands as
-their own processor attached to the root git parser. Lets see this pattern in argparse
+their own processor attached to the root git parser.
+
+One thing that bugs me is that when i add an optional argument to the root parser
+so that all subcommands get it, like:
+```python
+git_parser.add_argument('--global-option', help='all subcommands can use this argument')
+```
+I have to specify the parameter before the subcommand. So `python git.py --global-option foo add file.txt`
+works but `python git.py add file.txt --global-option foo` gives an error. Ideally
+I would be able to specify this option either before or after, but I havent figured
+out how to make this happen. Will update if I figure it out.
 
 {% sample lang="python" %}
 ```python
@@ -221,6 +233,7 @@ git_parser.add_argument('--global-option', help='all subcommands can use this ar
 git_subparsers = git_parser.add_subparsers()
 
 #create a subparser to handle arguments when 'git add' is called
+#the title of the subparser with the argument used as the command when using the cli
 git_file_add_parser = git_subparsers.add_parser('add', description='Add file contents to the index')
 git_file_add_parser.add_argument('filename', help='filename to add to index')
 
@@ -244,7 +257,7 @@ args.func(args)
 
 {% sample lang="bash" %}
 ```bash
-18:54:59 > macgregor > ⋯/demos/python/argparse >> master > python git.py --help
+18:54:59 > macgregor > .../demos/python/argparse > master > python git.py --help
 usage: git [-h] [--global-option GLOBAL_OPTION] {add,commit} ...
 
 python demo for argpase - subparsers usage
@@ -257,7 +270,7 @@ optional arguments:
   --global-option GLOBAL_OPTION
                         all subcommands can use this argument
 
-18:55:40 > macgregor > ⋯/demos/python/argparse >> master > python git.py add --help
+18:55:40 > macgregor > .../demos/python/argparse > master > python git.py add --help
 usage: git add [-h] filename
 
 Add file contents to the index
@@ -268,7 +281,7 @@ positional arguments:
 optional arguments:
   -h, --help  show this help message and exit
 
-18:55:47 > macgregor > ⋯/demos/python/argparse >> master > python git.py commit --help
+18:55:47 > macgregor > .../demos/python/argparse > master > python git.py commit --help
 usage: git commit [-h] [-m MESSAGE]
 
 Record changes to the repository
@@ -278,12 +291,12 @@ optional arguments:
   -m MESSAGE, --message MESSAGE
                         Use the given <msg> as the commit message
 
-18:59:12 > macgregor > ⋯/demos/python/argparse >> master > python git.py --global-option foo add hello.txt
+18:59:12 > macgregor > .../demos/python/argparse > master > python git.py --global-option foo add hello.txt
 adding file to git...
 parsed_args.filename = 'hello.txt'
 parsed_args.global_option = 'foo'
 
-18:59:55 > macgregor > ⋯/demos/python/argparse >> master > python git.py --global-option foo commit -m 'my commit message'
+18:59:55 > macgregor > .../demos/python/argparse > master > python git.py --global-option foo commit -m 'my commit message'
 commiting to git...
 parsed_args.message = 'my commit message'
 parsed_args.global_option = 'foo'
