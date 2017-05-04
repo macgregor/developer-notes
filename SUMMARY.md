@@ -6,6 +6,7 @@
 ### Python
 * [Documentation generation with Sphinx](python/sphinx.md)
 * [sphinx-autodoc ImportError: No module named foo](python/autodoc-import.md)
+* [Argparse Basics](python/argparse-basics.md)
 
 ### Linux
 * [How To: linux disk usage w/ du](linux/howto_du.md)
