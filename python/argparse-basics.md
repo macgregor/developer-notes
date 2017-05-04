@@ -144,54 +144,159 @@ parser.add_argument('--dry-run', action='store_true', default=False)
 This will create `args.dry_run` with a default value of `False` if it isnt provided
 and set `args.dry_run` to `True` if it is
 
+{% method %}
 ### Lists
 Both positional and optional arguments can take any number of arguments so that
-the variable in the parsed arguments is a `list(obj)`:
+the variable in the parsed arguments is a `list(obj)`
+
+{% sample lang="python" %}
 ```python
+import argparse
+
 parser = argparse.ArgumentParser(description='python demo for argpase - lists usage')
 parser.add_argument('list', help='this is required list of arguments', nargs='+')
 parser.add_argument('--optional-list-fixed', help='this is an optional list of 3 arguments', nargs=3)
 parser.add_argument('--optional-list-int', help='this is an optional list of ints', nargs='+', type=int)
+
+args = parser.parse_args()
+
+print 'parsed_args.list = \'%s\'' % "\',\'".join(args.list)
+print 'parsed_args.optional_list_fixed = \'%s\'' % "\',\'".join(args.optional_list_fixed)
+print 'parsed_args.optional_list_int = %s' % ','.join([str(i) for i in args.optional_list_int])
 ```
 
-## Section 1
-Talk about stuff.
-
-use `code` examples:
-```
-No language indicated, so no syntax highlighting.
-```
-
-## Section 2
-And another...
-```python
-s = "Python syntax highlighting"
-print s
-```
-
-{% method %}
-## Code Samples w/ gitbooks-theme-api
-
-This fancy theme lets you specify examples in multiple languages
-
-{% sample lang="js" %}
+{% sample lang="bash" %}
 ```bash
-$ npm install gitbook-api
-```
+18:19:02 > macgregor > .../demos/python/argparse > master > python demo.py --help
+usage: demo.py [-h]
+                [--optional-list-fixed OPTIONAL_LIST_FIXED OPTIONAL_LIST_FIXED OPTIONAL_LIST_FIXED]
+                [--optional-list-int OPTIONAL_LIST_INT [OPTIONAL_LIST_INT ...]]
+                list [list ...]
 
-{% sample lang="go" %}
-```bash
-$ go get github.com/GitbookIO/go-gitbook-api
-```
+python demo for argpase - lists usage
 
-{% common %}
-This will appear for both JavaScript and Go.
+positional arguments:
+  list                  this is required list of arguments
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --optional-list-fixed OPTIONAL_LIST_FIXED OPTIONAL_LIST_FIXED OPTIONAL_LIST_FIXED
+                        this is an optional list of 3 arguments
+  --optional-list-int OPTIONAL_LIST_INT [OPTIONAL_LIST_INT ...]
+                        this is an optional list of ints
+
+18:20:54 > macgregor > .../demos/python/argparse > master > python demo.py a b c d --optional-list-fixed one two three --optional-list-int 1 2 3 4 5 6
+parsed_args.list = 'a','b','c','d'
+parsed_args.optional_list_fixed = 'one','two','three'
+parsed_args.optional_list_int = 1,2,3,4,5,6
+```
 {% endmethod %}
 
+{% method %}
+## Subparsers
+Subparsers can be used to parse commands differently based on positional arguments
+that came before. For example git commands use different verbs and nouns to perform
+complex operations. For example `git add demo.py`, `git commit -m 'adding demo.py'`,
+`git checkout -b new_branch`, etc. You can think of each of these subcommands as
+their own processor attached to the root git parser. Lets see this pattern in argparse
+
+{% sample lang="python" %}
+```python
+import argparse
+
+def git_add(args):
+    print 'adding file to git...'
+    print 'parsed_args.filename = \'%s\'' % args.filename
+    print 'parsed_args.global_option = \'%s\'' % args.global_option
+
+def git_commit(args):
+    print 'commiting to git...'
+    print 'parsed_args.message = \'%s\'' % args.message
+    print 'parsed_args.global_option = \'%s\'' % args.global_option
+
+git_parser = argparse.ArgumentParser(prog='git', description='python demo for argpase - subparsers usage')
+git_parser.add_argument('--global-option', help='all subcommands can use this argument')
+
+#configure the root parser object to process subcommands
+git_subparsers = git_parser.add_subparsers()
+
+#create a subparser to handle arguments when 'git add' is called
+git_file_add_parser = git_subparsers.add_parser('add', description='Add file contents to the index')
+git_file_add_parser.add_argument('filename', help='filename to add to index')
+
+#this is a trick to have a function called by the parser which is matched
+#so if git add ... is called the git_add() method will be called with the parsed args
+#and it git commit ... is called the git_commit method will be called
+git_file_add_parser.set_defaults(func=git_add)
+
+#create a subparser to handle arguments when 'git commit' is called
+git_commit_parser = git_subparsers.add_parser('commit', description='Record changes to the repository')
+git_commit_parser.add_argument('-m', '--message', help='Use the given <msg> as the commit message')
+
+#another example of this can be found at https://docs.python.org/2.7/library/argparse.html#argparse.ArgumentParser.add_subparsers
+git_commit_parser.set_defaults(func=git_commit)
+
+args = git_parser.parse_args()
+
+#call the function matched by subparsers
+args.func(args)
+```
+
+{% sample lang="bash" %}
+```bash
+18:54:59 > macgregor > ⋯/demos/python/argparse >> master > python git.py --help
+usage: git [-h] [--global-option GLOBAL_OPTION] {add,commit} ...
+
+python demo for argpase - subparsers usage
+
+positional arguments:
+  {add,commit}
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --global-option GLOBAL_OPTION
+                        all subcommands can use this argument
+
+18:55:40 > macgregor > ⋯/demos/python/argparse >> master > python git.py add --help
+usage: git add [-h] filename
+
+Add file contents to the index
+
+positional arguments:
+  filename    filename to add to index
+
+optional arguments:
+  -h, --help  show this help message and exit
+
+18:55:47 > macgregor > ⋯/demos/python/argparse >> master > python git.py commit --help
+usage: git commit [-h] [-m MESSAGE]
+
+Record changes to the repository
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -m MESSAGE, --message MESSAGE
+                        Use the given <msg> as the commit message
+
+18:59:12 > macgregor > ⋯/demos/python/argparse >> master > python git.py --global-option foo add hello.txt
+adding file to git...
+parsed_args.filename = 'hello.txt'
+parsed_args.global_option = 'foo'
+
+18:59:55 > macgregor > ⋯/demos/python/argparse >> master > python git.py --global-option foo commit -m 'my commit message'
+commiting to git...
+parsed_args.message = 'my commit message'
+parsed_args.global_option = 'foo'
+```
+
+{% endmethod %}
 
 ## Conclusion
-Sum up the article
+All of this should be more than enough to make a sophisticated cli. Check out my
+argparse demo below for some more runable examples.
 
 ### Additional Resources
 * [Argparse Basics Demo](https://github.com/macgregor/demos/blob/master/python/argparse/demo.py)
 * [argparse docs](https://docs.python.org/2/library/argparse.html)
+* [Another argparse tutorial](https://pymotw.com/2/argparse/)
+* [Yet another argparse tutorial...](https://mkaz.tech/code/python-argparse-cookbook/)
