@@ -5,3 +5,5 @@ Useful links to information, tools, cheatsheets for various tools/websites
 * [Gitbooks documentation](https://toolchain.gitbook.com/)
 * [Markdown Cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
 
+## Python
+* [Python 2/3 compatibility cheat sheet](http://python-future.org/compatible_idioms.html)
