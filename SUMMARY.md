@@ -11,6 +11,9 @@
 ### Linux
 * [How To: linux disk usage w/ du](linux/howto_du.md)
 
+### Game Dev
+* [Engine Research](game_dev/engine-research.md)
+
 ### Templates
 * [Tech Blog](templates/tech-blog.md)
 * [Error post](templates/error-post.md)
