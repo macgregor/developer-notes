@@ -1,5 +1,6 @@
 # Mobile Game Dev Engines
-This is a introduction to the article. Maybe outline a problem case this article will help solve.
+Doing some research among major game engines to find what fits our requirements best
+for creating a cross platform 2D mobile game.
 
 ## Requirements
 * 2D (doubt I will ever want to do 3D work)
@@ -23,19 +24,8 @@ Notes/Follow ups:
 * I think ill need to do some extra hacking to get android working
 * do I need to be on a mac to build for iOS?
 
-#### Installing (Linux)
-1. create Epic games account and link github user - [details](https://wiki.unrealengine.com/GitHub_Setup)
-2. clone UnrealEngine [source](https://github.com/EpicGames/UnrealEngine)
-3. Build source (details for linux found in `Engine/Build/BatchFiles/Linux/README.md`)
-  1. install clang *3.5* c++ compiler, 3.7 which you get with `dnf install clang` failed running make. See troubleshooting link below for installing clang 3.5 manually.
-  2. run `./Setup.sh`
-  3. run `./GenerateProjectFiles.sh`
-  4. `make CrashReportClient ShaderCompileWorker UnrealLightmass UnrealPak UE4Editor`
-4. add `Engine/Binaries/Linux/` to path
-5. start editor: `U4Editor`
-
-Troubleshooting:
-* [building unreal engine 4 on fedora 20](https://forums.unrealengine.com/showthread.php?53451-Successful-4-6-0-build-on-Fedora-20-x86_64:)
+#### Installing
+[Fedora 23](unreal-engine-install.md)
 
 #### Tutorial
 * [unreal engine 4 2D game dev tutorial series](http://www.gamefromscratch.com/page/Unreal-Engine-2D-Game-Development-Tutorial-Series.aspx)

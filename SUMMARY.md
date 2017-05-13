@@ -13,6 +13,7 @@
 
 ### Game Dev
 * [Engine Research](game_dev/engine-research.md)
+* [Install Unreal Engine on Fedora 23](game_dev/unreal-engine-install.md)
 
 ### Templates
 * [Tech Blog](templates/tech-blog.md)
