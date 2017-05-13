@@ -25,7 +25,7 @@ Notes/Follow ups:
 * do I need to be on a mac to build for iOS?
 
 #### Installing
-[Fedora 23](unreal-engine-install.md)
+[Linux (Fedora 23)](unreal-engine-install.md)
 
 #### Tutorial
 * [unreal engine 4 2D game dev tutorial series](http://www.gamefromscratch.com/page/Unreal-Engine-2D-Game-Development-Tutorial-Series.aspx)
@@ -36,7 +36,7 @@ Notes/Follow ups:
 * potential cost, make sure out use case wont cost $$$ (licenses in the thousands of dollars potentially)
 
 #### Installing (Linux)
-1. `wget http://download.unity3d.com/download_unity/unity-editor-installer-5.1.0f3+2015091501.sh`
+[Linux (Fedora 23)](unity-install.md)
 
 
 ### Cocos2D
