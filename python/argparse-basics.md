@@ -209,8 +209,8 @@ git_parser.add_argument('--global-option', help='all subcommands can use this ar
 ```
 I have to specify the parameter before the subcommand. So `python git.py --global-option foo add file.txt`
 works but `python git.py add file.txt --global-option foo` gives an error. Ideally
-I would be able to specify this option either before or after, but I havent figured
-out how to make this happen. Will update if I figure it out.
+I would be able to specify this option either before or after, the next section shows
+one way to do this.
 
 {% sample lang="python" %}
 ```python
@@ -302,6 +302,56 @@ parsed_args.message = 'my commit message'
 parsed_args.global_option = 'foo'
 ```
 
+{% endmethod %}
+
+## Inheriting arguments
+If you are using subparsers and want to inherit arguments (say, a debug flag or global config file or something)
+You can create a parent parser which is used to inherit arguments from. We can modify the previous example a bit
+to add a debug flag which both the `git add` and `git commit` commands inherit. Its a little
+clunky but it works well.
+
+{% sample lang="python" %}
+```python
+import argparse
+
+git_parser = argparse.ArgumentParser(prog='git', description='python demo for argpase - subparsers usage')
+
+#configure the root parser object to process subcommands
+git_subparsers = git_parser.add_subparsers()
+
+#create a parent parser to inherit arguments from
+parent = argparse.ArgumentParser(add_help=False)
+parent.add_argument('-d', '--debug', action='store_true', default=False, help='enable debug logging')
+
+#create a subparser to handle arguments when 'git add' is called
+#the title of the subparser with the argument used as the command when using the cli
+#pass in the parent parser with the debug flag using the 'parents' keyword, note it takes
+#a list
+git_file_add_parser = git_subparsers.add_parser('add', description='Add file contents to the index', parents=[parent])
+git_file_add_parser.add_argument('filename', help='filename to add to index')
+
+...
+```
+
+{% sample lang="bash" %}
+```
+18:55:40 > macgregor > .../demos/python/argparse > master > python git.py add --help
+usage: git add [-h] [-d] filename
+
+Add file contents to the index
+
+positional arguments:
+  filename     filename to add to index
+
+optional arguments:
+  -h, --help   show this help message and exit
+  -d, --debug  enable debug logging
+
+18:59:12 > macgregor > .../demos/python/argparse > master > python git.py add hello.txt --debug
+adding file to git...
+parsed_args.filename = 'hello.txt'
+parsed_args.debug = 'True'
+```
 {% endmethod %}
 
 ## Conclusion
