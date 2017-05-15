@@ -304,6 +304,7 @@ parsed_args.global_option = 'foo'
 
 {% endmethod %}
 
+{% method %}
 ## Inheriting arguments
 If you are using subparsers and want to inherit arguments (say, a debug flag or global config file or something)
 You can create a parent parser which is used to inherit arguments from. We can modify the previous example a bit
