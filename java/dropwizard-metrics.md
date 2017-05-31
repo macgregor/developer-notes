@@ -184,11 +184,11 @@ It can easily be conbined with the `metrics-spring` module to get all the spring
 
 ## Alternative - Netflix Servo
 
-* [Netflix Servo](https://github.com/Netflix/servo) was created apparently because dropwizard metrics wasnt satisfying the people at Netflix who decided to write their own library in the same vein. It offers many of the same concepts as Dropwizard Metrics including annotation drive metrics, automatic JMX exposure and publishing to external systems. Not sure if the ecosystem is as large as metrics, it doesnt seem to be at first glance.
+[Netflix Servo](https://github.com/Netflix/servo) was created apparently because dropwizard metrics wasnt satisfying the people at Netflix who decided to write their own library in the same vein. It offers many of the same concepts as Dropwizard Metrics including annotation drive metrics, automatic JMX exposure and publishing to external systems. Not sure if the ecosystem is as large as metrics, it doesnt seem to be at first glance.
 
 Most of the other alternatives I found like [javasimon](https://github.com/virgo47/javasimon) and [ERMA](https://github.com/erma/erma/wiki) seemed far less developed, documented, supported, etc. They honestly dont warrant very much examination compared to Dropwizard Metrics and Servo. I could be wrong/lazy though.
 
-### Additional Resources
+## Additional Resources
 * [Dropwizard Metrics](http://metrics.dropwizard.io/3.2.2/)
 * [Dropwizard Metrics 101 (blog)](http://lcbecker.github.io/blog/2015/11/18/dropwizard-metrics-101/)
 * [Spring + Dropwizard Metrics (blog)](http://www.heapwhisperer.com/2015/07/exposing-jvm-metrics-in-spring-boot.html)
