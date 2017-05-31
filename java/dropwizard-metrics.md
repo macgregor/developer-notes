@@ -165,6 +165,28 @@ The [`metrics-spring`](https://mvnrepository.com/artifact/com.ryantenney.metrics
 </beans>
 ```
 
+## Graphite Integration
+The [`metrics-graphite`](https://mvnrepository.com/artifact/io.dropwizard.metrics/metrics-graphite) module provides GraphiteReporter, which allows your application to constantly stream metric values to a Graphite server
+
+```Java
+final Graphite graphite = new Graphite(new InetSocketAddress("graphite.example.com", 2003));
+final GraphiteReporter reporter = GraphiteReporter.forRegistry(registry)
+                                                  .prefixedWith("web1.example.com")
+                                                  .convertRatesTo(TimeUnit.SECONDS)
+                                                  .convertDurationsTo(TimeUnit.MILLISECONDS)
+                                                  .filter(MetricFilter.ALL)
+                                                  .build(graphite);
+reporter.start(1, TimeUnit.MINUTES);
+```
+
+It can easily be conbined with the `metrics-spring` module to get all the spring DI goodies as seen in
+[this blog](https://craftsmen.nl/application-monitoring-with-graphite-an-example-how-to-integrate-dropwizard-metrics-in-a-spring-boot-application/).
+
+## Alternative - Netflix Servo
+
+* [Netflix Servo](https://github.com/Netflix/servo) was created apparently because dropwizard metrics wasnt satisfying the people at Netflix who decided to write their own library in the same vein. It offers many of the same concepts as Dropwizard Metrics including annotation drive metrics, automatic JMX exposure and publishing to external systems. Not sure if the ecosystem is as large as metrics, it doesnt seem to be at first glance.
+
+Most of the other alternatives I found like [javasimon](https://github.com/virgo47/javasimon) and [ERMA](https://github.com/erma/erma/wiki) seemed far less developed, documented, supported, etc. They honestly dont warrant very much examination compared to Dropwizard Metrics and Servo. I could be wrong/lazy though.
 
 ### Additional Resources
 * [Dropwizard Metrics](http://metrics.dropwizard.io/3.2.2/)
@@ -172,3 +194,4 @@ The [`metrics-spring`](https://mvnrepository.com/artifact/com.ryantenney.metrics
 * [Spring + Dropwizard Metrics (blog)](http://www.heapwhisperer.com/2015/07/exposing-jvm-metrics-in-spring-boot.html)
 * [nice, broad, practical example of industrial drop wizard metrics use](http://www.baeldung.com/dropwizard-metrics)
 * [good demo project](https://github.com/markmclaren/metrics-spring-example) - uses metrics-servlet, metrics-servlets, metrics-annotation, metrics-jvm, metrics-spring
+* [demo showing spring + graphite config](https://craftsmen.nl/application-monitoring-with-graphite-an-example-how-to-integrate-dropwizard-metrics-in-a-spring-boot-application/)
