@@ -3,6 +3,9 @@
 * [Introduction](README.md)
 * [Helpful links](helpful_links.md)
 
+### Java
+* [Drop Wizard Metrics](java/dropwizard-metrics.md)
+
 ### Python
 * [Documentation generation with Sphinx](python/sphinx.md)
 * [sphinx-autodoc ImportError: No module named foo](python/autodoc-import.md)
