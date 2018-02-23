@@ -362,6 +362,6 @@ Gradle is a pretty cool build tool. The learning curve isn't too steep, but the 
 * [The Gradle build system: Tutorial - vogella.com](http://www.vogella.com/tutorials/Gradle/article.html)
 * [Java Build Tools: Ant vs Maven vs Gradle - technologyconversations.com](https://technologyconversations.com/2014/06/18/build-tools/)
 * [The Gradle Wrapper - docs.gradle.org](https://docs.gradle.org/current/userguide/gradle_wrapper.html)
-* [Using Gradle PLugins - docs.gradle.org](https://docs.gradle.org/current/userguide/plugins.html)
+* [Using Gradle Plugins - docs.gradle.org](https://docs.gradle.org/current/userguide/plugins.html)
 * [Gradle Goodness: Replacing << Operator For Tasks - mrhaki.blogspot.com ](http://mrhaki.blogspot.com/2016/11/gradle-goodness-replacing-operator-for.html)
 * [Introduction to Gradle Lifecycle and Tasks - javajee.com ](http://javajee.com/introduction-to-gradle-lifecycle-and-tasks)

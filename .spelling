@@ -139,7 +139,6 @@ lifecycle
 doFirst
 dependsOn
 Plugins
-PLugins
 preconfigured
 pluginname
 plugins
