@@ -3,6 +3,15 @@
     "pluginsConfig": {
       "theme-api": {
             "theme": "dark"
-        }
+        },
+      "gitbooks-summary-gen":{
+            "exclude": ["templates", "README.md", "SUMMARY.md", "img"],
+            "cleanup-section-names": true,
+            "strip-numbers": true,
+            "sort-entry-by-title": true
+      },
+      "markdown-spellcheck":{
+            "exclude": ["**/templates/**"]
+      }
     }
 }

@@ -1,24 +1,28 @@
+
 # Developer Notes
+* [About](helpful_links.md)
 
-* [Introduction](README.md)
-* [Helpful links](helpful_links.md)
+## Game Dev
+* [Installing Unity on Linux (Fedora 23)](game_dev/unity-install.md)
+* [Installing Unreal Engine on Linux (Fedora 23)](game_dev/unreal-engine-install.md)
+* [Mobile Game Dev Engines](game_dev/engine-research.md)
 
-### Java
+## Java
 * [Drop Wizard Metrics](java/dropwizard-metrics.md)
 
-### Python
-* [Documentation generation with Sphinx](python/sphinx.md)
-* [sphinx-autodoc ImportError: No module named foo](python/autodoc-import.md)
+## Linux
+* [How To: find linux disk hogs with du (and more...)](linux/howto_du.md)
+
+## Python
 * [Argparse Basics](python/argparse-basics.md)
+* [Generating Documentation with Sphynx](python/sphinx.md)
+* [sphinx-autodoc ImportError: No module named foo](python/autodoc-import.md)
 
-### Linux
-* [How To: linux disk usage w/ du](linux/howto_du.md)
+## Software Dev
+* [Service Level Objectives](software-dev/service-level-objectives.md)
 
-### Game Dev
-* [Engine Research](game_dev/engine-research.md)
-* [Install Unreal Engine on Fedora 23](game_dev/unreal-engine-install.md)
-* [Install Unity on Fedora 23](game_dev/unity-install.md)
+### Build Tools
+* [Gradle](software-dev/build_tools/gradle.md)
 
-### Templates
-* [Tech Blog](templates/tech-blog.md)
-* [Error post](templates/error-post.md)
+### Hosting Platforms
+* [Heroku](software-dev/hosting_platforms/heroku.md)
