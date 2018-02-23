@@ -6,7 +6,7 @@ This was a bit painful for me. Here goes...
 2. clone UnrealEngine [source](https://github.com/EpicGames/UnrealEngine)
 
 ## Install Dependencies
-The UnrealEngine `Setup.sh` will get alot of the dependencies but it will miss some
+The UnrealEngine `Setup.sh` will get a lot of the dependencies but it will miss some
 
 ```bash
 sudo dnf install dos2unix cmake gtk3-devel glib2-devel libgdiplus SDL2*
@@ -39,7 +39,7 @@ Details can be found in `Engine/Build/BatchFiles/Linux/README.md` in your local 
 [2017.05.13-18.40.59:098][  0]LogRHI:Error: OpenGL 4.3 not supported by driver
 [2017.05.13-18.40.59:099][  0]LogInit:Error: _PlatformCreateOpenGLContextCore - Could not create OpenGL 4.3 context, SDL error: 'Could not create GL context: GLXBadFBConfig'
 ```
-Your video card doesnt support OpenGL or, in my case, you need to switch from integrated graphics to
+Your video card doesn't support OpenGL or, in my case, you need to switch from integrated graphics to
 your NVidia card:
 ```bash
 primusrun Engine/Binaries/Linux/UE4Editor

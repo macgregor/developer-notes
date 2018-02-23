@@ -2,7 +2,7 @@
 Dropwizard Metrics is a java library designed to abstract gathering and reporting of metrics. It supports several metric types: Gauge, Counters, Histograms, Meters and Timers and can report these metrics in a variety of ways including JMX, Console, CSV files, SLF4J loggers, and graphite. The integration with graphite makes it particularly powerful as you can then store and analyze your metrics with many different tools like grafana to visualize performance or Shinken for alerting off metrics.
 
 ## Metric Registry
-The `MetricRegistry` class is a collection of all the metrics for your application. Each metric is associated with a `MetricRegistry` and has a uniqueue name within that registry (e.g. com.example.Queue.size). There is a static helper method on the `MetricRegistry` class to help create names:
+The `MetricRegistry` class is a collection of all the metrics for your application. Each metric is associated with a `MetricRegistry` and has a unique name within that registry (e.g. com.example.Queue.size). There is a static helper method on the `MetricRegistry` class to help create names:
 ```Java
 MetricRegistry.name(Queue.class, "requests", "size")
 MetricRegistry.name(Queue.class, "responses", "size")
@@ -46,7 +46,7 @@ resultCounts.update(results.size());
 How a histogram gathers and calculates metrics can be changed, see [reservoir](http://metrics.dropwizard.io/3.1.0/apidocs/index.html?com/codahale/metrics/class-use/Reservoir.html).
 
 ### Meters
-Measures the rate at which a set of events occur. Meters measure the rate of the events in a few different ways. The mean rate is the average rate of events. It’s generally useful for trivia, but as it represents the total rate for your application’s entire lifetime (e.g., the total number of requests handled, divided by the number of seconds the process has been running), it doesn’t offer a sense of recency.
+Measures the rate at which a set of events occur. Meters measure the rate of the events in a few different ways. The mean rate is the average rate of events. It’s generally useful for trivia, but as it represents the total rate for your application’s entire lifetime (e.g., the total number of requests handled, divided by the number of seconds the process has been running), it does’t offer a sense of recency.
 
 ```Java
 final Meter getRequests = registry.meter(name(WebProxy.class, "get-requests", "requests"));
@@ -138,7 +138,7 @@ In `web.xml`:
 You will need to add your `MetricRegistry` to the servlet context as an attribute named `com.codahale.metrics.servlet.InstrumentedFilter.registry` you can do this several ways, like extending `InstrumentedFilterContextListener` or dependency injection
 
 ### metrics-servlet vs metrics-servlets
-Here are two very similar and confusingly named modules. Im still a little confused without having worked with it first hand, but my understanding is that `metrics-servlet` (sans 's') will automatically gather metrics around your various request endpoints while `metrics-servlets` (sans-sans 's') provides a sort of admin interface into your metrics which you can access via http. It also provides a couple convenience endpoints like `/ping` which provides you a ping endpoint and `/healthcheck` which runs all your healthchecks but it is primarily about access to metrics.
+Here are two very similar and confusingly named modules. I'm still a little confused without having worked with it first hand, but my understanding is that `metrics-servlet` (sans 's') will automatically gather metrics around your various request endpoints while `metrics-servlets` (sans-sans 's') provides a sort of admin interface into your metrics which you can access via http. It also provides a couple convenience endpoints like `/ping` which provides you a ping endpoint and `/healthcheck` which runs all your healthchecks but it is primarily about access to metrics.
 
 So `metrics-servlet` helps gathering data while `metrics-servlets` helps access data.
 
@@ -179,14 +179,14 @@ final GraphiteReporter reporter = GraphiteReporter.forRegistry(registry)
 reporter.start(1, TimeUnit.MINUTES);
 ```
 
-It can easily be conbined with the `metrics-spring` module to get all the spring DI goodies as seen in
+It can easily be combined with the `metrics-spring` module to get all the spring DI goodies as seen in
 [this blog](https://craftsmen.nl/application-monitoring-with-graphite-an-example-how-to-integrate-dropwizard-metrics-in-a-spring-boot-application/).
 
 # Alternative - Netflix Servo
 
-[Netflix Servo](https://github.com/Netflix/servo) was created apparently because dropwizard metrics wasnt satisfying the people at Netflix who decided to write their own library in the same vein. It offers many of the same concepts as Dropwizard Metrics including annotation drive metrics, automatic JMX exposure and publishing to external systems. Not sure if the ecosystem is as large as metrics, it doesnt seem to be at first glance.
+[Netflix Servo](https://github.com/Netflix/servo) was created apparently because dropwizard metrics wasn't satisfying the people at Netflix who decided to write their own library in the same vein. It offers many of the same concepts as Dropwizard Metrics including annotation drive metrics, automatic JMX exposure and publishing to external systems. Not sure if the ecosystem is as large as metrics, it doesn't seem to be at first glance.
 
-Most of the other alternatives I found like [javasimon](https://github.com/virgo47/javasimon) and [ERMA](https://github.com/erma/erma/wiki) seemed far less developed, documented, supported, etc. They honestly dont warrant very much examination compared to Dropwizard Metrics and Servo. I could be wrong/lazy though.
+Most of the other alternatives I found like [javasimon](https://github.com/virgo47/javasimon) and [ERMA](https://github.com/erma/erma/wiki) seemed far less developed, documented, supported, etc. They honestly don't warrant very much examination compared to Dropwizard Metrics and Servo. I could be wrong/lazy though.
 
 # Additional Resources
 * [Dropwizard Metrics](http://metrics.dropwizard.io/3.2.2/)

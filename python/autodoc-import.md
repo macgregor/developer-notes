@@ -44,7 +44,7 @@ able to find it.
 
 So my project has the documentation root directory in a subdirectory called `docs/`
 I tried adding `sys.path.append(os.path.abspath('..'))` to `docs/conf.py` but
-that didnt quit get it. Going up two levels did the trick.
+that didn't quit get it. Going up two levels did the trick.
 
 Final solution, add the following to `conf.py` (exact path will vary based on your
 configuration):
@@ -67,12 +67,12 @@ sys.path.append(os.path.abspath('..'))
 ```
 
 ## sphinx-apidoc --append-syspath
-When using sphinx-apidoc to initalize your project documentation there is a flag
+When using sphinx-apidoc to initialize your project documentation there is a flag
 `-a, --append-syspath` which says it will "Append module_path to sys.path,
 used when --full is given" which sounds hopeful. I tried it and it added
 `sys.path.append('/home/macgregor/Repos/personal/accounting')` to my conf.py.
 First of all this is an absolute path so it wont work on any other computer I may
-want to use and second it didnt even work (probably because my docs are in a
+want to use and second it didn't even work (probably because my docs are in a
 subdirectory). I changed it back to my aforementioned solution.
 
 ## Additional Resources

@@ -1,10 +1,10 @@
 # Generating Documentation with Sphynx
-Coming from the enterprise Java world, Im used to pretty standardized ways of
+Coming from the enterprise Java world, I'm used to pretty standardized ways of
 documenting code that is mostly handled by my IDE. Python seemed to offer more
 choices which can be good, but it felt a little overwhelming as well.
 
 ## Sphinx
-Sphynx is a documentation generator written for and in Python. Alot of big python
+Sphynx is a documentation generator written for and in Python. A lot of big python
 projects (Django, SciPy, Python itself). While used heavily by the Python community,
 it is not restricted to just Python. There are extensions that support many other
 languages including [java](http://bronto.github.io/javasphinx/),
@@ -64,7 +64,7 @@ Generate a separate page for each module in your project.
 ```python
 autodoc_member_order = 'bysource'
 ```
-By default autodoc sorts everything alphabetically. Im not a fan, I think im
+By default autodoc sorts everything alphabetically. I'm not a fan, I think I'm
 pretty good at ordering my code while writing it. Add this anywhere in your
 conf.py to keep source ordering.
 

@@ -22,8 +22,8 @@ df -h
 ```
 
 ## docker
-If you use docker long enough it will eat up alot of space. If du shows something
-like `/var/lib/docker/devicemapper/devicemapper` taking up alot of space get rid
+If you use docker long enough it will eat up a lot of space. If du shows something
+like `/var/lib/docker/devicemapper/devicemapper` taking up a lot of space get rid
 of some docker images
 
 If you are running new-ish docker you can use

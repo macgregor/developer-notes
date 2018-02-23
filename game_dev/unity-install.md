@@ -1,5 +1,5 @@
 # Installing Unity on Linux (Fedora 23)
-This one wasnt too bad, you will need to create a Unity account and sign in to
+This one wasn't too bad, you will need to create a Unity account and sign in to
 use Unity.
 
 ## Dependencies
@@ -18,12 +18,12 @@ add `/usr/share/unity-editor/Editor` to path
 run: `Unity`
 
 ## Install MonoDevelop as IDE
-Note: unity appears to come with a built in version of monodevelop, Im having some
+Note: unity appears to come with a built in version of monodevelop, I'm having some
 issues making it work, but the explicit install might not be required
 
 
 Monodevelop uses flatpak to install, fedora repos give you a relatively old version of
-flatpak so most flatpak commands you find out there dont quite work.
+flatpak so most flatpak commands you find out there don't quite work.
 
 ```bash
 sudo dnf install flatpak
@@ -54,7 +54,7 @@ off. Also, code seems to install to `/usr/share/code/`
 ```
 Solution: remove `/usr/share/unity-editor/Editor/Data/Tools/libgpg-error.so.0`
 
-### chome-sandbox permission error starting unity
+### chrome-sandbox permission error starting unity
 ```
 Chromium Embedded Framework requires that the file '/usr/share/unity-editor/Editor/chrome-sandbox' is owned by root and has permissions 4755.
 ```

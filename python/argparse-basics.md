@@ -19,7 +19,7 @@ You can check out that project to run examples for all the topics in this post.
 
 Save this in a file (say `demo.py`) and run it...
 
-Type casting/validation, help usage, input checking. That's alot of value from
+Type casting/validation, help usage, input checking. That's a lot of value from
 6 lines of python.
 
 {% sample lang="python" %}
@@ -85,7 +85,7 @@ This is what we used in the example above.
 parser.add_argument('one')
 ```
 This creates a positional argument that will be stored in `one` in the parsed Namespace.
-If not enough positional arguments are specfied the program will halt. You can
+If not enough positional arguments are specified the program will halt. You can
 specify help text to explain to users what this field is for:
 ```python
 parser.add_argument('one', help='this is the first required argument')
@@ -119,7 +119,7 @@ print args.out
 ```
 
 #### Defaults
-Since optional arguments are not required you may need to check for their existance
+Since optional arguments are not required you may need to check for their existence
 before trying to use them in code or risk `NoneType` problems:
 ```python
 parser.add_argument('-o', '--output-dir', dest='out')
@@ -134,7 +134,7 @@ args = parser.parse_args()
 method_that_hates_uninitialized_obejcts(args.out)
 ```
 Note: you cant specify defaults on positional arguments, they are required so it
-wouldnt make since to provide a default.
+wouldn't make since to provide a default.
 
 #### Flags
 A common pattern is to have boolean flags you optionally pass to the cli tool, this
@@ -143,7 +143,7 @@ is simple enough with argparse using the `action` field:
 #python demo.py --dry-run
 parser.add_argument('--dry-run', action='store_true', default=False)
 ```
-This will create `args.dry_run` with a default value of `False` if it isnt provided
+This will create `args.dry_run` with a default value of `False` if it isn't provided
 and set `args.dry_run` to `True` if it is
 
 {% method %}
@@ -222,7 +222,7 @@ def git_add(args):
     print 'parsed_args.global_option = \'%s\'' % args.global_option
 
 def git_commit(args):
-    print 'commiting to git...'
+    print 'committing to git...'
     print 'parsed_args.message = \'%s\'' % args.message
     print 'parsed_args.global_option = \'%s\'' % args.global_option
 
@@ -297,7 +297,7 @@ parsed_args.filename = 'hello.txt'
 parsed_args.global_option = 'foo'
 
 18:59:55 > macgregor > .../demos/python/argparse > master > python git.py --global-option foo commit -m 'my commit message'
-commiting to git...
+committing to git...
 parsed_args.message = 'my commit message'
 parsed_args.global_option = 'foo'
 ```
@@ -357,7 +357,7 @@ parsed_args.debug = 'True'
 
 ## Conclusion
 All of this should be more than enough to make a sophisticated cli. Check out my
-argparse demo below for some more runable examples.
+argparse demo below for some more runnable examples.
 
 ### Additional Resources
 * [Argparse Basics Demo](https://github.com/macgregor/demos/blob/master/python/argparse/demo.py)
