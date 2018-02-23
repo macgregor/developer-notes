@@ -1,7 +1,7 @@
 # Gradle
 Gradle is a build system, similar to Maven or Ant, which can be used to manage project dependencies, build and test your application. It supports Maven and Ivy repositories allowing you to reuse existing infrastructure.
 
-Gradle is commonly used to build android projects, so many have exposure to it from that world. It is also popular because it doesn't use xml, unlike maven or ant. Instead is has its own DSL which is generally more terse and intuitive. It tends to have less boiler plate than its cousins as well.
+Gradle is commonly used to build android projects, so many have exposure to it from that world. It is also popular because it doesn't use xml, unlike maven or ant. Instead it has its own DSL which is generally more terse and intuitive. It tends to have less boiler plate than its cousins as well.
 
 Another extremely powerful feature in Gradle is that it allows you to easily extend functionality within your build.gradle file by writing Groovy or Kotlin code whenever you need it. You can extend Ant and Maven functionality but it is much more difficult.
 
@@ -260,7 +260,7 @@ apply from: 'https://raw.github.com/akhikhl/gradle-onejar/master/pluginScripts/g
 dropwizardVersion = '1.2.3'
 compile (
             "io.dropwizard:dropwizard-core:${dropwizardVersion}"
-    )
+)
 ```
 Note the double quotes, single quotes will not properly resolve the variable.
 
@@ -309,7 +309,7 @@ def homePath = System.properties['user.home']
 ```
 
 
-## create/initialize a new gradle project
+### create/initialize a new gradle project
 ```
 > gradle -q help --task init
 Detailed task information for init
