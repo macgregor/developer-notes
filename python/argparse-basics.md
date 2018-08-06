@@ -363,4 +363,4 @@ argparse demo below for some more runnable examples.
 * [Argparse Basics Demo](https://github.com/macgregor/demos/blob/master/python/argparse/demo.py)
 * [argparse docs](https://docs.python.org/2/library/argparse.html)
 * [Another argparse tutorial](https://pymotw.com/2/argparse/)
-* [Yet another argparse tutorial...](https://mkaz.tech/code/python-argparse-cookbook/)
+* [Yet another argparse tutorial...](https://mkaz.blog/code/python-argparse-cookbook/)
